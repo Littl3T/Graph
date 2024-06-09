@@ -1,6 +1,7 @@
-# Graph
-Graph in python. Not the best but it's homemade lol
+from graph import Graph
 
+
+"""
 You can create an empy graph using Graph()
 
 Add a vertex by using .addVertex(name) => it creates a new vertex "name" in your graph.
@@ -21,7 +22,38 @@ Get the shortest path Matrix between all vertex using .floydWarshall() => Return
 Visualize a Matrix using .showMatrix(matrix) => "matrix" will be printed correctly on your terminal
 
 Get the Spanning Tree of a graph using .Kruskal() => Returns a Graph
+"""
 
 
-email : tomdeney@gmail.com
-discord: littl3t
+graph = Graph()
+
+graph.addVertex('A')
+graph.addVertex('B')
+graph.addVertex('C')
+graph.addVertex('D')
+
+graph.addEdge('A','B',5)
+graph.addEdge('A','C',1)
+graph.addEdge('C','B',2)
+graph.addEdge('A','D',2)
+
+print("Edges of the graph:", graph.edges)
+print("Vertex of the graph:", graph.vertex)
+
+print("-"*20)
+print("Adjency Matrix")
+adjency_matrix = graph.adjacencyMatrix()
+graph.showMatrix(adjency_matrix)
+
+print("-"*20)
+print("Floyd Warshall Matrix")
+floyd_warshall = graph.floydWarshall()
+graph.showMatrix(floyd_warshall)
+
+print("-"*20)
+print("Shortest path between C and D")
+print(graph.dijkstra('C', 'D'))
+
+print("-"*20)
+print("Edges of the spanning tree : ", graph.Kruskal().edges)
+print("Vertex of the spanning tree: ", graph.Kruskal().vertex)
